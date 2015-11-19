@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Ninject_chapter10_mvc_webapi.Models.Product>
+@{ ViewBag.Title = "Index";}
+
+@section Scripts {
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/app/productApp.js"></script>
+    <script src="~/Scripts/app/productService.js"></script>
+    <script src="~/Scripts/app/productController.js"></script>
+}
+
+<h2>MVC dependency test</h2>
+<div class="panel panel-primary">
+    <div class="panel-heading">RSVPs</div>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.ProductID</td>
+                    <td>@p.Name</td>
+                    <td>@p.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+<h2>Webapi dependency test</h2>
+
+<div class="panel panel-primary" ng-app="productApp" ng-controller="ProductController">
+    <div class="panel-heading">RSVPs</div>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="p in products">
+                <td>{{p.ProductID}}</td>
+                <td>{{p.Name}}</td>
+                <td>{{p.Price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
